@@ -89,4 +89,31 @@ printAllPairs(2);
     O(1) -> logN -> O(n) -> nlogN -> O(n2)
 */
 
+/*
+
+***** Stack Learner******
+
+1. A variable is not a data [structure.](https://structure.Data) A data structure stores a lot of data.
+
+2. Data structure works only store data.
+
+3. An algorithm is an instruction.
+
+4. Arrays and linked lists are used in every data structure somewhere.
+
+5. Select the DSA that best suits this problem.
+
+6. Operation- transform: fully change data, map - apply every data or element.
+
+7. Search gives me a single piece of data, but a filter gives me a collection(array, linked list) of data.
+
+8. 48.15 - important
+
+9. 57.25 -
+
+10. Time and space complexity analysis is important --- the growth analysis technique is asymptotic analysis.
+
+
+*/
+
 
