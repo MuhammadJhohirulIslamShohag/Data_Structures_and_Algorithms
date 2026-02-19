@@ -84,3 +84,9 @@ function printAllPairs(n){
      // total O(n * n) === O(n*n)
 }
 printAllPairs(2);
+
+/*
+    O(1) -> logN -> O(n) -> nlogN -> O(n2)
+*/
+
+
