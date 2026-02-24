@@ -113,6 +113,8 @@ printAllPairs(2);
 
 10. Time and space complexity analysis is important --- the growth analysis technique is asymptotic analysis.
 
+11. If you want to reduce operation, you need use space or if you want to reduce space you need to use operation.
+
 
 */
 
