@@ -25,7 +25,20 @@
         => Searching(get()) --- O(N)
         => Access(get()) --- O(N)
 
+
+------- SL --------
+
+1. Link list - is a random memory address but Array is not random
+
+2. One node two information, one is data, second one reference or pointer
+
+3. Head and tail for link list
+
+4. Singly link list only know information about next node not second node doesn't know first node like this way go.
+
 */
+
+
 /*
     *** Benefits of the Singly Linked List ***
         => Singly Linked List are an execellent alternative to arrays when insertion and deletion at the beginning are frequently required.
