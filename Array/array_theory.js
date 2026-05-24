@@ -43,3 +43,39 @@ patternTwo(5)
 
 
 */
+
+/*
+
+/*
+------------------- pattern six --------------------------
+
+const patternTwo = (n) => {
+  for(let i = 0; i < n; i++){
+    let line = '';
+    for(let j = 0; j < n; j++){
+      line += '*' + ' '
+    }
+    console.log(line);
+  }
+  
+}
+patternTwo(5)
+
+*/
+
+/*
+------------------- pattern seven --------------------------
+
+const patternTwo = (n) => {
+  for(let i = 0; i < n; i++){
+    let line = '';
+    for(let j = 0; j < n; j++){
+      line += '*' + ' '
+    }
+    console.log(line);
+  }
+  
+}
+patternTwo(5)
+
+*/
