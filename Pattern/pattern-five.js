@@ -14,6 +14,22 @@ const patternFive = (n) => {
 }
 patternFive(6)
 
+------
+
+const patternFive = (n) => {
+  for(let i = 1; i <= n; i++){
+    let line = '';
+    for(let j = 0; j < n-i+1; j++){
+      line += '*' + ' '
+    }
+    console.log(line);
+  }
+
+}
+patternFive(5)
+
+-----
+
 # Mastering Pattern Printing in JavaScript: The Inverted Right-Angled Triangle
 
 Welcome back to our pattern printing journey! We have previously mastered constructing upward-trending patterns. Today, we are turning things upside down—literally. We will look at how to build an **Inverted Right-Angled Triangle** of stars.
