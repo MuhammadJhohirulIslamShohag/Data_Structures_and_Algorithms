@@ -32,9 +32,7 @@ This problem is a fantastic way to practice state toggling within loops. Instead
 ---
 
 ## The Goal
-We want to write a JavaScript function that takes a number `n` and prints a triangle of alternating `1`s and `0`s. 
-
-Looking at your reference image, there is a minor detail to correct! Your code starts rows on a `1` or `0` based on the row index, but your screenshot shows the pattern starting with `0` on the first row:
+We want to write a JavaScript function that takes a number `n` and prints a triangle of alternating `1`s and `0`s:
 
 ```text
 0
