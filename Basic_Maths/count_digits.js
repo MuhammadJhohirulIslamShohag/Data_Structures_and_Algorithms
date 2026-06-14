@@ -1,6 +1,15 @@
 /*
     Count the Digits
 */
+
+const countDigits = (n) => {
+  let count = Math.floor(Math.log10(n)) + 1;
+  console.log(count);
+}
+
+countDigits(7789)
+
+----
 const countDigits = (n) => {
   let count = 0;
   while (n > 0) {
