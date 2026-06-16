@@ -269,3 +269,25 @@ const printNumber = (i, n) => {
 
 // 🚀 Entry point: print numbers from 1 to 4
 printNumber(1, 4);
+
+
+// ─────────────────────────────────────────
+// Recursive function to print numbers n down to 1
+// i = current number, n = last number (stop point)
+// ─────────────────────────────────────────
+const printNumber = (i, n) => {
+
+    // 🛑 Base case: if i goes below 1, stop recursion
+    if (i < 1) {
+        return;
+    }
+
+    // ✅ Print current number
+    console.log(i);
+
+    // 🔁 Recursive call: decrement i and repeat
+    printNumber(i - 1, n);
+}
+
+// 🚀 Entry point: start from 4, go down to 1
+printNumber(4, 4);
