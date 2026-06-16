@@ -132,3 +132,22 @@ factorial1(3)
 
         => Stack Overflow(Too many function is called, infinity function is called)
 */
+
+// Recursive function to print 'Shohag' n times
+// i = current count, n = total times to print
+
+const printNames = (i, n) => {
+    // Base case: stop when i exceeds n
+    if (i > n) {
+        return;
+    }
+
+    // Print the name
+    console.log('Shohag');
+
+    // Recursive call: move to next count
+    printNames(i + 1, n);
+}
+
+// Start from 1, print 5 times
+printNames(1, 5);
