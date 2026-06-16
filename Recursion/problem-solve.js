@@ -248,3 +248,24 @@ let obj3 = {
     e: { e: { e: 2 }, ee: "car" },
 };
 console.log(collectStrings(obj3));
+
+// ─────────────────────────────────────────
+// Recursive function to print numbers 1 to n
+// i = current number, n = last number
+// ─────────────────────────────────────────
+const printNumber = (i, n) => {
+
+    // 🛑 Base case: if i crosses n, stop recursion
+    if (i > n) {
+        return;
+    }
+
+    // ✅ Print current number
+    console.log(i);
+
+    // 🔁 Recursive call: increment i and repeat
+    printNumber(i + 1, n);
+}
+
+// 🚀 Entry point: print numbers from 1 to 4
+printNumber(1, 4);
