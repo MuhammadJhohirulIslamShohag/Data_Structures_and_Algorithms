@@ -291,3 +291,25 @@ const printNumber = (i, n) => {
 
 // 🚀 Entry point: start from 4, go down to 1
 printNumber(4, 4);
+
+// ─────────────────────────────────────────
+// Recursive function to print numbers n down to 1
+// using BACKTRACKING technique
+// i = current number, n = last number
+// ─────────────────────────────────────────
+const printNumber = (i, n) => {
+
+    // 🛑 Base case: if i crosses n, stop recursion
+    if (i > n) {
+        return;
+    }
+
+    // 🔁 Recursive call FIRST (go deep before printing)
+    printNumber(i + 1, n);
+
+    // ✅ Print AFTER recursion returns (backtracking)
+    console.log(i);
+}
+
+// 🚀 Entry point: print numbers from 4 down to 1
+printNumber(1, 4);
