@@ -313,3 +313,27 @@ const printNumber = (i, n) => {
 
 // 🚀 Entry point: print numbers from 4 down to 1
 printNumber(1, 4);
+
+// ─────────────────────────────────────────
+// Recursive function to reverse an array
+// arr = array, left = start index, right = end index
+// ─────────────────────────────────────────
+const reverseArray = (arr, left, right) => {
+
+    // 🛑 Base case: stop when left meets right
+    if (left >= right) {
+        return;
+    }
+
+    // ✅ Swap left and right elements
+    let temp = arr[left];
+    arr[left] = arr[right];
+    arr[right] = temp;
+
+    // 🔁 Recursive call: move inward from both sides
+    reverseArray(arr, left + 1, right - 1);
+}
+
+// 🚀 Entry point
+let arr = [1, 2, 3, 4, 5];
+reverseArray(arr, 0, arr.length - 1);
