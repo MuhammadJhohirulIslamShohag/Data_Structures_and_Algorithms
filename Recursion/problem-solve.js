@@ -337,3 +337,27 @@ const reverseArray = (arr, left, right) => {
 // 🚀 Entry point
 let arr = [1, 2, 3, 4, 5];
 reverseArray(arr, 0, arr.length - 1);
+
+// ─────────────────────────────────────────
+// Recursive function to check palindrome
+// str = string, left = start, right = end
+// ─────────────────────────────────────────
+const isPalindrome = (str, left, right) => {
+
+    // 🛑 Base case: if pointers meet, it's a palindrome
+    if (left >= right) {
+        return true;
+    }
+
+    // ❌ If characters don't match, NOT a palindrome
+    if (str[left] !== str[right]) {
+        return false;
+    }
+
+    // 🔁 Recursive call: move inward from both sides
+    return isPalindrome(str, left + 1, right - 1);
+}
+
+// 🚀 Entry point
+let str = "racecar";
+console.log(isPalindrome(str, 0, str.length - 1));
