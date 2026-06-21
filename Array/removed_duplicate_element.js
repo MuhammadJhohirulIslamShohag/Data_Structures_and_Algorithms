@@ -3,6 +3,7 @@
 */
 
 // Brute Force --- Time: O(n log n) (Set internally), Space: O(n) extra
+// if it is unsorted array 
 
 const removeArrayDuplicateSet = (arr) => {
     let set = new Set();
@@ -31,12 +32,14 @@ const removeArrayDuplicateOptimal = (arr) => {
         // If we find a completely new element...
         if(arr[i] !== arr[j]){
             i++;             // Move our unique marker forward
+            // arr[++i]=arr[j]
             arr[i] = arr[j]; // Overwrite the duplicate with the new unique value
         }
     }
     
     // Extract the portion of the array containing the unique elements
     // return arr.slice(0, i + 1);
+    // arr.length = i+1;-> return arr;
 
     let result = [];
     for(let k = 0; k <= i; k++){
