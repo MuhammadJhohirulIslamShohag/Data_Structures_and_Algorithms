@@ -3,17 +3,22 @@
 */
 const leftRotateArrayByK = (arr, k) => {
     let n = arr.length;
-    k = k % n;
+    k = k % n; // Step 1: Normalize k
 
+    // Step 2: Store the first 'k' elements in a temporary array
     const temp = arr.slice(0, k);
 
+    // Step 3: Shift the remaining elements to the front
     for(let i = k; i < n; i++){
-        arr[i-k] = arr[i]
+        arr[i - k] = arr[i];
     }
 
+    // Step 4: Paste the temporary elements back at the end
     for(let i = 0; i < k; i++){
-        arr[n-k+i] = temp[i]
+        arr[n - k + i] = temp[i];
     }
+    
+    return arr;
 }
 
 leftRotateArrayByK([1, 2, 3, 4, 5, 6], 2)
