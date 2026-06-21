@@ -3,19 +3,22 @@
 */
 const rightRotateArrayByK = (arr, k) => {
     let n = arr.length;
-    k = k % n;
+    k = k % n; // Step 1: Normalize k
 
+    // Step 2: Slice the last 'k' elements into a temporary cache
     let temp = arr.slice(n - k);
 
+    // Step 3: Shift the remaining elements forward (from right to left)
     for(let i = n - k - 1; i >= 0; i--){
-        arr[i+k] = arr[i]
+        arr[i + k] = arr[i];
     }
-    console.log(arr, 'arr')
 
+    // Step 4: Paste the cached elements to the front of the array
     for(let j = 0; j < k; j++){
-        arr[j] = temp[j]
+        arr[j] = temp[j];
     }
-    console.log(arr, 'arr')
+    
+    return arr;
 }
 
 rightRotateArrayByK([1, 2, 3, 4, 5, 6], 2)
