@@ -2,29 +2,35 @@
     Left Rotate Array  by One
 */
 
-// brute force --- o(n)
+// Brute Force 
 const leftRotateArrayByOneBrute = (arr) => {
     let n = arr.length;
-    let temp = new Array(n);
+    let temp = new Array(n); // Allocating a new array in memory
 
+    // Shift elements from index 1 onwards to the left
     for(let i = 1; i < n; i++){
         temp[i - 1] = arr[i];
     }
 
+    // Place the first element at the last index
     temp[n - 1] = arr[0];
 
-    return temp
+    return temp;
 }
 
-leftRotateArrayByOneBrute([1, 2, 3, 4, 5])
+console.log(leftRotateArrayByOneBrute([1, 2, 3, 4, 5])); // Output: [2, 3, 4, 5, 1]
 
-// better 
+// Better 
 const leftRotateArrayByOneBetter = (arr) => {
     let first = arr[0];
-    let rest = arr.slice(0);
-    rest.push(first)
+    
+    // Create a shallow copy of the array (excluding the first element)
+    let rest = arr.slice(1); 
+    
+    // Push the first element to the end of our new array
+    rest.push(first);
 
-    return rest
+    return rest;
 }
 
 leftRotateArrayByOneBetter([1, 2, 3, 4, 5])
@@ -32,18 +38,24 @@ leftRotateArrayByOneBetter([1, 2, 3, 4, 5])
 // optimal 
 const leftRotateArrayByOneOptimal = (arr) => {
     let n = arr.length;
-    let first = arr[0];
+    if (n <= 1) return arr; // Edge case safety
+    
+    let first = arr[0]; // Step 1: Save the champion
 
+    // Step 2: Shift everything to the left
     for(let i = 1; i < n; i++){
-        arr[i - 1] = arr[i]
+        arr[i - 1] = arr[i];
     }
 
-    arr[n-1] = first
-    return arr
+    // Step 3: Put the first element at the end
+    arr[n - 1] = first;
+    
+    return arr;
 }
 
 leftRotateArrayByOneOptimal([1, 2, 3, 4, 5])
 
+/*
 # Array Manipulation: Mastering "Left Rotate an Array by One" in JavaScript
 
 Array rotation is a foundational coding problem that regularly pops up in coding bootcamps and technical interviews. It is a brilliant way to test your understanding of array indexing, memory reference, and in-place mutation.
@@ -163,3 +175,5 @@ console.log(leftRotateArrayByOneOptimal([1, 2, 3, 4, 5])); // Output: [2, 3, 4, 
 Understanding how to manipulate indices without throwing extra memory at the problem is what separates junior developers from mid-level engineers.
 
 *If you found this breakdown intuitive, make sure to drop some **claps 👏** and follow along for more JavaScript optimization tips. How would you modify this to rotate an array by 'k' spaces? Let's discuss in the comments below!*
+
+*/
