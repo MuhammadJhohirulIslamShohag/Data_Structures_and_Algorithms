@@ -8,37 +8,39 @@ const moveZeroEnd_Brute = (arr) => {
     let tempArr = [];      
     let tempArrZero = [];
 
+    // Separate zeros and non-zeros
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i] != 0) {
+        if (arr[i] !== 0) {
             tempArr.push(arr[i]);
         } else {
             tempArrZero.push(arr[i]);
         }
     }
 
+    // Combine them back together
     for (let z = 0; z < tempArrZero.length; z++) {
         tempArr.push(tempArrZero[z]);
     }
 
-    console.log(tempArr); // [1, 2, 1, 4, 0, 0, 0]
+    console.log(tempArr); // Output: [1, 2, 1, 4, 0, 0, 0]
 };
 
 moveZeroEnd_Brute([1, 2, 0, 1, 0, 4, 0]);
 
 // Better 
-
 const moveZeroEnd_Better = (arr) => {
+    // Extract only the non-zero values
     let nonZeros = arr.filter(x => x !== 0);
 
-
+    // Calculate how many zeros were left behind
     let zeroCount = arr.length - nonZeros.length;
 
-    
+    // Create a new array filled with that many zeros
     let zeros = new Array(zeroCount).fill(0);
 
-
+    // Merge them using the spread operator
     let result = [...nonZeros, ...zeros];
-    console.log(result); 
+    console.log(result); // Output: [1, 2, 1, 4, 0, 0, 0]
 };
 
 moveZeroEnd_Better([1, 2, 0, 1, 0, 4, 0]);
@@ -48,29 +50,27 @@ const moveZeroEnd_Optimal = (arr) => {
     let n = arr.length;
     let j = -1;
 
-    // 
+    // Step 1: Find the index of the very first zero
     for (let i = 0; i < n; i++) {
-        if (arr[i] == 0) {
+        if (arr[i] === 0) {
             j = i;
             break;
         }
     }
 
-    // 
-    if (j == -1) {
-        console.log(arr);
-        return;
-    }
+    // Edge Case: If there are no zeros at all, we are done!
+    if (j === -1) return arr;
 
-    // 
+    // Step 2: Look for non-zero elements to swap with our zero pointer
     for (let p = j + 1; p < n; p++) {
-        if (arr[p] != 0) {
-            [arr[p], arr[j]] = [arr[j], arr[p]]; // swap
-            j++;
+        if (arr[p] !== 0) {
+            // Modern ES6 Destructuring Swap
+            [arr[p], arr[j]] = [arr[j], arr[p]]; 
+            j++; // Move the zero pointer forward to the next zero placeholder
         }
     }
 
-    console.log(arr); // [1, 2, 1, 4, 0, 0, 0]
+    console.log(arr); // Output: [1, 2, 1, 4, 0, 0, 0]
 };
 
 moveZeroEnd_Optimal([1, 2, 0, 1, 0, 4, 0]);
