@@ -2,7 +2,6 @@
   Linear Search 
 */
 
-/*
 
 const linearSearch = (arr, number) => {
     let n = arr.length;
@@ -19,6 +18,8 @@ const linearSearch = (arr, number) => {
 }
 
 console.log(linearSearch([1, 2, 3, 4, 5], 4)); // Output: 3
+
+/*
 
 # The Foundation of Algorithm Design: Understanding Linear Search in JavaScript
 When entering the world of data structures and algorithms, searching is one of the first core concepts you will encounter. Before diving into complex dividing algorithms, you must first master the baseline of all search mechanics: **Linear Search**.
