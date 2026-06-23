@@ -19,3 +19,34 @@ const unionSortedArrayBetter = (arr, arr1) => {
 }
 
 console.log(unionSortedArray([2, 3, 4, 4, 5, 11, 12],[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+
+// Optimal 
+const unionSortedArrayOptimal = (arr, arr1) => {
+    let n1 = arr.length;
+    let n2 = arr1.length;
+    let i = 0;
+    let j = 0;
+    let result = [];
+    
+    const addIfUnique = (value) => {
+        if(result.length == 0 || result [result.length - 1] != value)
+        result.push(value);
+    }
+    
+    while(i < n1 && j < n2){
+        if(arr[i] <= arr1[j]){
+            addIfUnique(arr[i])
+            i++;
+        } else {
+            addIfUnique(arr1[j])
+            j++;
+        }
+        
+    }
+       
+    while(i < n1) addIfUnique(arr[i++])
+    while(j < n2) addIfUnique(arr1[j++])
+    
+    return result
+}
+console.log(unionSortedArrayOptimal([2, 3, 4, 4, 5, 11, 12],[1, 2, 3, 4, 5, 6, 7, 8, 9, 10,13]))
