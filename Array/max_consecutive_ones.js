@@ -21,3 +21,11 @@ const maxConsecutiveOnesBrute = (arr) => {
 
 const arr = [1, 1, 0, 1, 1, 1, 0, 1];
 console.log(maxConsecutiveOnesBrute(arr)); // 3
+
+// Optimal — O(n)
+const maxConsecutiveOnesOptimal = (arr) => {
+    return Math.max(...arr.join('').split('0').map(s => s.length))
+}
+
+const arr = [1, 1, 0, 1, 1, 1, 0, 1];
+console.log(maxConsecutiveOnesOptimal(arr)); // 3
