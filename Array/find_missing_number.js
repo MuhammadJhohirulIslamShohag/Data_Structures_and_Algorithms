@@ -24,3 +24,15 @@ const findMissingNumber = (arr) => {
 }
 const arr = [8, 2, 4, 5, 3, 7, 1, 0];
 console.log(findMissingNumber(arr))
+
+// better 
+const findMissingNumber = (arr) => {
+    let n = arr.length;
+    let expectedSum = (n * (n + 1)) / 2;
+    let actualSum = arr.reduce((sum, num) => sum + num, 0);
+    
+    return expectedSum - actualSum
+}
+const arr = [8, 2, 4, 5, 3, 7, 1,0];
+console.log(findMissingNumber(arr))
+
