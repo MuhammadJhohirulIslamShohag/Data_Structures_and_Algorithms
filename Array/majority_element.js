@@ -29,3 +29,28 @@ const majorityElementBrute = (arr) => {
 
 
 console.log(majorityElementBrute([7, 0, 0, 1, 7, 7, 2, 7, 7])); // Output: 7
+
+// Better Approach
+const majorityElementBetterWithMap = (arr) => {
+    let n = arr.length;
+    let map = new Map(); // Initializing a real Map instance
+    
+    for (let i = 0; i < n; i++) {
+        let num = arr[i];
+        
+        // map.get(num) fetches the existing count. If undefined, default to 0.
+        let currentCount = (map.get(num) || 0) + 1;
+        
+        // Update the count of the number inside the Map instance
+        map.set(num, currentCount);
+        
+        // Check if the current frequency exceeds N/2
+        if (currentCount > Math.floor(n / 2)) {
+            return num;
+        }
+    }
+    return -2;
+}
+
+console.log(majorityElementBetterWithMap([7, 0, 0, 1, 7, 7, 2, 7, 7])); // Output: 7
+
