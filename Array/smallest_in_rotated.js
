@@ -1,0 +1,65 @@
+// Brute Force Approach
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+//
+// Traverse the entire array and keep track
+// of the smallest element found.
+function findMinBruteForce(numbers) {
+
+    // Assume the first element is the minimum
+    let min = numbers[0];
+
+    // Compare every remaining element with the current minimum
+    for (let i = 1; i < numbers.length; i++) {
+
+        // Update the minimum if a smaller element is found
+        if (numbers[i] < min) {
+            min = numbers[i];
+        }
+    }
+
+    // Return the smallest element
+    return min;
+}
+
+
+
+// Optimal Approach (Binary Search)
+// Time Complexity: O(log n)
+// Space Complexity: O(1)
+//
+// In a rotated sorted array, compare the middle element
+// with the rightmost element to determine which half
+// contains the minimum value.
+function findMin(numbers) {
+
+    let left = 0;
+    let right = numbers.length - 1;
+
+    // Continue searching until only one element remains
+    while (left < right) {
+
+        // Find the middle index
+        let mid = Math.floor((left + right) / 2);
+
+        // If the middle element is greater than the rightmost element,
+        // the minimum must be in the right half.
+        if (numbers[mid] > numbers[right]) {
+            left = mid + 1;
+        } else {
+            // Otherwise, the minimum is in the left half
+            // (including the middle element).
+            right = mid;
+        }
+    }
+
+    // When the loop ends, left and right point
+    // to the minimum element.
+    return numbers[left];
+}
+
+
+
+// Test Cases
+console.log(findMin([3, 4, 1, 2]));          // Output: 1
+console.log(findMin([6, 7, 8, -5, -4, 2]));  // Output: -5
