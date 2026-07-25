@@ -49,4 +49,4 @@ const isStringPalindrome = (str) => {
   return true; 
 }
 
-console.log(isStringPalindrome('No 'x' in Nixon'))
+console.log(isStringPalindrome("No 'x' in Nixon"))
