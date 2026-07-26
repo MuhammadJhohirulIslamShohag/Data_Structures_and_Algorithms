@@ -63,3 +63,60 @@ function isPalindrome(s) {
   // Step 5: If all opposing character pairs match, confirm it is a palindrome
   return true;
 }
+
+/**
+ * Counts all palindromic substrings in a given string using the Expand Around Center approach.
+ * 
+ * Time Complexity: O(n²) — We iterate through 2n - 1 centers, and each expansion takes up to O(n) time.
+ * Space Complexity: O(1) — Constant extra space (no memory allocated for substring slices).
+ * 
+ * @param {string} str - The input string to evaluate.
+ * @return {number} - The total count of palindromic substrings.
+ */
+function countPalindromicSubstringsOptimal(str) {
+  // Step 1: Initialize a counter for tracking palindromes and get the string length
+  let count = 0;
+  const n = str.length;
+
+  // Step 2: Iterate through every character index, treating each position as a potential center
+  for (let center = 0; center < n; center++) {
+    
+    // Step 3: Count odd-length palindromes (single-character center, e.g., "aba" centered at 'b')
+    count += expandAroundCenter(str, center, center);
+    
+    // Step 4: Count even-length palindromes (two-character center, e.g., "abba" centered between 'b' and 'b')
+    count += expandAroundCenter(str, center, center + 1);
+  }
+
+  // Step 5: Return the total count of all palindromic substrings found
+  return count;
+}
+
+
+/**
+ * Helper function: Expands outward from a center and counts valid palindromic substrings.
+ * 
+ * @param {string} str - The full input string.
+ * @param {number} left - The starting left index pointer.
+ * @param {number} right - The starting right index pointer.
+ * @return {number} - The number of valid palindromes expanding from this center.
+ */
+function expandAroundCenter(str, left, right) {
+  // Step 1: Initialize a counter for palindromes expanded from the current center
+  let count = 0;
+
+  // Step 2: Expand outward as long as pointers stay within bounds and characters match
+  while (left >= 0 && right < str.length && str[left] === str[right]) {
+    
+    // Step 3: Increment count since matching characters on both sides form a valid palindrome
+    count++;
+    
+    // Step 4: Expand the window outward (move left pointer left, right pointer right)
+    left--;
+    right++;
+  }
+
+  // Step 5: Return the count of valid palindromes expanded from this specific center
+  return count;
+}
+
