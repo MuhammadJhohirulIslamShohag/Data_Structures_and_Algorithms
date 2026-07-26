@@ -3,3 +3,63 @@
 
   Given a string str, determine the total number of substrings that are palindromes.
 */
+/**
+ * Counts all palindromic substrings in a given string using a brute-force approach.
+ * 
+ * Time Complexity: O(n³) — O(n²) to generate all substrings * O(n) to check palindrome status
+ * Space Complexity: O(n) — memory allocated by `str.slice()`
+ * 
+ * @param {string} str - The input string to evaluate.
+ * @return {number} - The total count of palindromic substrings.
+ */
+function countPalindromicSubstringsBrute(str) {
+  // Step 1: Initialize a counter for tracking palindromes and get the string length
+  let count = 0;
+  const n = str.length;
+
+  // Step 2: Set the starting index for potential substrings
+  for (let start = 0; start < n; start++) {
+    
+    // Step 3: Set the ending index (inclusive) to form every possible substring starting from 'start'
+    for (let end = start; end < n; end++) {
+      
+      // Step 4: Extract the current substring from index 'start' up to 'end'
+      const substring = str.slice(start, end + 1); 
+      
+      // Step 5: Check if the extracted substring is a palindrome
+      if (isPalindrome(substring)) {           
+        // Step 6: Increment the counter if a valid palindrome is found
+        count++;
+      }
+    }
+  }
+
+  // Step 7: Return the final count of all palindromic substrings
+  return count;
+}
+
+
+/**
+ * Helper function: Checks if a given string reads the same forwards and backwards.
+ * 
+ * @param {string} s - The substring to test.
+ * @return {boolean} - Returns true if the string is a palindrome, false otherwise.
+ */
+function isPalindrome(s) {
+  // Step 1: Initialize two pointers—one at the beginning and one at the end of the string
+  let left = 0;
+  let right = s.length - 1;
+
+  // Step 2: Loop until the two pointers meet or cross at the middle
+  while (left < right) {
+    // Step 3: Compare characters at the current pointers; if they don't match, it's not a palindrome
+    if (s[left] !== s[right]) return false;
+    
+    // Step 4: Move the left pointer rightward and the right pointer leftward
+    left++;
+    right--;
+  }
+  
+  // Step 5: If all opposing character pairs match, confirm it is a palindrome
+  return true;
+}
