@@ -5,3 +5,74 @@ Given a positive integer num, determine the number of set bits (1s) present in t
 
 */
 
+/**
+ * Counts set bits (1s) by simulating manual binary conversion.
+ *
+ * STEP-BY-STEP TRACE (e.g., num = 13, binary 1101):
+ * Initial: count = 0, num = 13
+ * Loop 1:  13 % 2 = 1 -> count = 1 | Math.floor(13 / 2) = 6
+ * Loop 2:   6 % 2 = 0 -> count = 1 | Math.floor(6 / 2)  = 3
+ * Loop 3:   3 % 2 = 1 -> count = 2 | Math.floor(3 / 2)  = 1
+ * Loop 4:   1 % 2 = 1 -> count = 3 | Math.floor(1 / 2)  = 0 (Stop)
+ * Result:  3
+ */
+
+function countSetBitsBruteForce(num) {
+  let count = 0;
+
+  // Process the binary representation one bit at a time, right-to-left
+  while (num > 0) {
+    // Step 1: Check the last bit (remainder of division by 2 is 1 if bit is set)
+    count += num % 2;
+
+    // Step 2: Remove the last bit by dividing by 2 and rounding down
+    num = Math.floor(num / 2);
+  }
+
+  return count;
+}
+
+---
+
+/**
+ * Counts set bits (1s) using Brian Kernighan's Algorithm.
+ *
+ * STEP-BY-STEP TRACE (e.g., num = 13, binary 1101):
+ * Initial: count = 0, num = 13 (1101)
+ *
+ * Loop 1:
+ *   Step 1: Calculate num - 1  =>  12 (1100)
+ *   Step 2: Bitwise AND (&)    =>  13 & 12 = 1101 & 1100 = 12 (1100)
+ *   Step 3: Increment count    =>  count = 1
+ *
+ * Loop 2:
+ *   Step 1: Calculate num - 1  =>  11 (1011)
+ *   Step 2: Bitwise AND (&)    =>  12 & 11 = 1100 & 1011 = 8 (1000)
+ *   Step 3: Increment count    =>  count = 2
+ *
+ * Loop 3:
+ *   Step 1: Calculate num - 1  =>  7 (0111)
+ *   Step 2: Bitwise AND (&)    =>  8 & 7 = 1000 & 0111 = 0 (0000)
+ *   Step 3: Increment count    =>  count = 3
+ *
+ * Loop 4: num is 0 -> Loop terminates
+ * Result: 3
+ */
+
+function countSetBitsOptimal(num) {
+  let count = 0;
+
+  // Repeat until all set bits (1s) have been turn to 0
+  while (num > 0) {
+    // Step 1: `num - 1` flips the lowest set bit to 0 and all trailing 0s to 1s.
+    // Step 2: `num & (num - 1)` turns off that lowest set bit in `num`.
+    num = num & (num - 1);
+
+    // Step 3: Count that one set bit was successfully removed.
+    count++;
+  }
+
+  return count;
+}
+
+
