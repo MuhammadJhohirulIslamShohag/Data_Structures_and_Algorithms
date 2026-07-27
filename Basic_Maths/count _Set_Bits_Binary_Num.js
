@@ -1,0 +1,7 @@
+/*
+  Count Set Bits in a Binary Number
+
+Given a positive integer num, determine the number of set bits (1s) present in the binary representation of the given number, commonly referred to as the Hamming weight.
+
+*/
+
