@@ -5,7 +5,7 @@ Given a positive integer num, determine the number of set bits (1s) present in t
 
 */
 
-/**
+/*
  * Counts set bits (1s) by simulating manual binary conversion.
  *
  * STEP-BY-STEP TRACE (e.g., num = 13, binary 1101):
@@ -15,7 +15,7 @@ Given a positive integer num, determine the number of set bits (1s) present in t
  * Loop 3:   3 % 2 = 1 -> count = 2 | Math.floor(3 / 2)  = 1
  * Loop 4:   1 % 2 = 1 -> count = 3 | Math.floor(1 / 2)  = 0 (Stop)
  * Result:  3
- */
+*/
 
 function countSetBitsBruteForce(num) {
   let count = 0;
@@ -32,9 +32,8 @@ function countSetBitsBruteForce(num) {
   return count;
 }
 
----
 
-/**
+/*
  * Counts set bits (1s) using Brian Kernighan's Algorithm.
  *
  * STEP-BY-STEP TRACE (e.g., num = 13, binary 1101):
@@ -57,7 +56,7 @@ function countSetBitsBruteForce(num) {
  *
  * Loop 4: num is 0 -> Loop terminates
  * Result: 3
- */
+*/
 
 function countSetBitsOptimal(num) {
   let count = 0;
