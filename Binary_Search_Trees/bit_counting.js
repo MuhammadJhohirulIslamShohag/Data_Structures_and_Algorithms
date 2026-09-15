@@ -47,4 +47,31 @@ function bitCountingBruteForce(n) {
 console.log(bitCountingBruteForce(5)); 
 // Output: [0, 1, 1, 2, 1, 2]
 
+/**
+ * Calculates set bit counts for every number from 0 up to `n` using Dynamic Programming.
+ * 
+ * Key Insight:
+ * The number of 1s in `i` is equal to the number of 1s in `i >> 1` (i divided by 2) 
+ * plus the last bit (`i & 1`).
+ * 
+ * Time Complexity:  O(n) — iterates through 0 to n once, doing constant time O(1) work per number.
+ * Space Complexity: O(n) — returns an array of size (n + 1). Auxiliary space is O(1).
+ */
+function bitCountingOptimal(n) {
+  // Allocate array of size n + 1 pre-filled with 0s
+  const result = new Array(n + 1).fill(0);
+
+  for (let i = 0; i <= n; i++) {
+    // result[i >> 1]: looks up the pre-calculated result for floor(i / 2)
+    // (i & 1): evaluates to 1 if i is odd (least significant bit is 1), otherwise 0
+    result[i] = result[i >> 1] + (i & 1);
+  }
+
+  return result;
+}
+
+console.log(bitCountingOptimal(5));
+// Output: [0, 1, 1, 2, 1, 2]
+
+
 
