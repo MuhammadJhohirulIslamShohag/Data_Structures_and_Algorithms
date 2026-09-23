@@ -1,0 +1,7 @@
+/*
+
+*****Binary Search Tree Kth Smallest Element ****
+
+Given the root node of a binary search tree (BST) and an integer k, write a function to find and return the k-th smallest value in the BST. Treat k as one-based, so k = 1 asks for the smallest value.
+
+*/
