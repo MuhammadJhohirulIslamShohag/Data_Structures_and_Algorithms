@@ -34,7 +34,16 @@ const kthSmallestElement = (root: TreeNode | null, k: number): number => {
   const stack: TreeNode[]  = [];
   // currect value tracking pointer;
   const curr: TreeNode | nul = root;
-
+   
+  // Traversing TreeNode
+  while(curr !== null || stack.length > 0){
+    
+   // Traversing leftmost TreeNode
+   while(curr !== null){
+     curr = node.left;
+      stack.push(node.left)
+   }
+  }
   
 }
 
