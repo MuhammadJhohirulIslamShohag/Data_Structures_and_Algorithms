@@ -5,3 +5,37 @@
 Given the root node of a binary search tree (BST) and an integer k, write a function to find and return the k-th smallest value in the BST. Treat k as one-based, so k = 1 asks for the smallest value.
 
 */
+
+/*
+  Definition for a Binary Tree Node
+*/
+
+interface TreeNode{
+  val: Number;
+  left: TreeNode | null;
+  right: TreeNode | null;
+}
+
+/**
+
+* Find a K-th smallest Element in a Binary Search Tree.
+*
+*Approach: Interative In-Order Traversal (DFS) with early stopping.
+* Time Complexity: O(H + K), where H is the height of the tree.
+* Space Complexity: O(H), Auxiliary space for the explicit Call Stack.
+
+**/
+
+const kthSmallestElement = (root: TreeNode | null, k: number): number => {
+  // Edge Case: empty node
+  if(!root) return - 1;
+  
+  // storing leftmost value 
+  const stack: TreeNode[]  = [];
+  // currect value tracking pointer;
+  const curr: TreeNode | nul = root;
+
+  
+}
+
+
