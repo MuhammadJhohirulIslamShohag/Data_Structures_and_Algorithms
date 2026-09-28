@@ -26,34 +26,54 @@ interface TreeNode{
 
 **/
 
-const kthSmallestElement = (root: TreeNode | null, k: number): number => {
-  // Edge Case: empty node
-  if(!root) return - 1;
-  
-  // storing leftmost value 
-  const stack: TreeNode[]  = [];
-  // currect value tracking pointer;
-  const curr: TreeNode | nul = root;
-   
-  // Traversing TreeNode
-  while(curr !== null || stack.length > 0){
-    
-   // Traversing leftmost TreeNode
-   while(curr !== null){
-     curr = node.left;
-      stack.push(node.left)
-   }
-
-cur = stack.pop()
-k--
-
-if(k=== 0){
-  return cur;
+interface TreeNode {
+  val: number;               // ঘরের নাম্বার (যেমন 1, 2, 3)
+  left: TreeNode | null;     // বাম দিকের ছোট ঘর (না থাকলে null = খালি)
+  right: TreeNode | null;    // ডান দিকের ঘর (না থাকলে null = খালি)
 }
+
+// 🎯 কাজ: সবচেয়ে ছোট থেকে গুনে গুনে k নম্বর ঘরটা খুঁজে বের করা
+// যেমন k = 2 মানে "দ্বিতীয় ছোট নাম্বারটা কোনটা?"
+const kthSmallestElement = (root: TreeNode | null, k: number): number => {
+
+  // 🌳 গাছ যদি একদম খালি হয়, খোঁজার কিছুই নেই, তাই -1 বলে দাও
+  if (!root) return -1;
+
+  // 📚 এটা একটা "প্লেটের স্তূপ"। যেসব ঘর পরে আবার ফিরে আসতে হবে,
+  //    সেগুলো এখানে একটার উপর একটা রাখব (মনে রাখার খাতার মতো)
+  const stack: TreeNode[] = [];
+
+  // 👣 curr মানে "এখন আমি কোন ঘরে দাঁড়িয়ে আছি"। শুরুতে root এ (একদম উপরে)
+  let curr: TreeNode | null = root;
+
+  // 🔁 যতক্ষণ হাঁটার জায়গা আছে (curr খালি না) অথবা
+  //    স্তূপে ফিরে যাওয়ার ঘর বাকি আছে, ততক্ষণ চলতে থাকো
+  while (curr !== null || stack.length > 0) {
+
+    // ⬅️ ধাপ ১: বাম দিকে যতদূর যাওয়া যায় যাও
+    //    (BST তে বামে সবসময় ছোট নাম্বার থাকে, তাই ছোটদের কাছে পৌঁছাতে চাই)
+    while (curr !== null) {
+      stack.push(curr);      // 📌 যে ঘর পার হচ্ছি সেটা স্তূপে রাখো, পরে ফিরব
+      curr = curr.left;      // 👣 বামের ঘরে এক পা এগাও
+    }
+
+    // ⬆️ ধাপ ২: বামে আর যাওয়া যায় না! স্তূপের সবার উপরের ঘরটা তোলো
+    //    এটাই এখন সবচেয়ে ছোট নাম্বার (যেটা এখনো গোনা হয়নি)
+    curr = stack.pop()!;
+
+    // 🔢 ধাপ ৩: একটা ঘর গোনা হলো! তাই k থেকে ১ কমাও
+    //    (k = 2 ছিল, এখন 1 বাকি; এভাবে 0 হলে বুঝব পৌঁছে গেছি)
+    k--;
+
+    // 🎉 k 0 হয়ে গেল মানে এইটাই আমাদের খোঁজা k নম্বর ঘর! নাম্বারটা বলে দাও
+    if (k === 0) return curr.val;
+
+    // ➡️ ধাপ ৪: এই ঘরের ডান দিকে যাও (ডানে বড় নাম্বারগুলো আছে)
+    //    তারপর উপরে গিয়ে আবার ধাপ ১ থেকে শুরু
+    curr = curr.right;
   }
 
-cur = node.right;
-  
-}
-
-
+  // 😅 সব ঘর গুনে ফেললাম কিন্তু k নম্বর পেলাম না
+  //    (k যদি ঘরের সংখ্যার চেয়ে বড় হয়), তাই -1
+  return -1;
+};
