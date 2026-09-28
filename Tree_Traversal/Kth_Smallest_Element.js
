@@ -43,7 +43,16 @@ const kthSmallestElement = (root: TreeNode | null, k: number): number => {
      curr = node.left;
       stack.push(node.left)
    }
+
+cur = stack.pop()
+k--
+
+if(k=== 0){
+  return cur;
+}
   }
+
+cur = node.right;
   
 }
 
