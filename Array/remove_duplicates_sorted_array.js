@@ -20,26 +20,27 @@
 **/
 
 const removedDuplicateSortedArray = (nums) => {
-    // if it is empty array no duplicate sorted array so return zero.
+    // if ihe array is empty, there are no unique elements to count so return 0;.
     if(nums.length === 0) return 0;
     
-    // slow pointer which indicates unique values index;
+    // 'k' is the slow pointer which are tracking the index of the last unique element.
     let k = 0;
      
-    // through every element and in place changing element 
+    // Iterate through every element with the first pointer 'i'
     for(let i = 0; i < nums.length; i++){
       
-      // checked if it is unique value 
+      // check if the current element is unique compared to the last unique one.
       if(nums[k] !== nums[num]){
-          // if it is swapping array 
-          nums[k] = nums[i];
 
-         // just move next unique value index 
-          k++;
+          // Move the slow pointer forward to the next slot.
+          k++
+
+         // Place the new unique value at the current position in-place.  
+         nums[k] = nums[i];
        }
     }
 
-    // return how much unique value in the array.
+    // return the count of unique values (k+1 because k is the zero based index.
     return k;
 
 }
